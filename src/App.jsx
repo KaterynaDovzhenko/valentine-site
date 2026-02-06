@@ -3,23 +3,23 @@ import "./App.css";
 
 export default function App() {
   const [noVisible, setNoVisible] = useState(true);
-  const [zoomYes, setZoomYes] = useState(false);
+  const [yesZoom, setYesZoom] = useState(false);
   const [accepted, setAccepted] = useState(false);
 
   const handleNo = () => {
-    setNoVisible(false);
-    setZoomYes(true); // triggers zoom
+    setNoVisible(false); // hide No button
+    setYesZoom(true); // trigger zoom on Yes button
   };
 
   const handleYes = () => {
-    setAccepted(true);
+    setAccepted(true); // show final text + gif
   };
 
   return (
     <div className="container">
       {!accepted ? (
         <>
-          <h1>Will you be my Valentine? 💘</h1>
+          <h1>R u gonna be my Valentine? 💘</h1>
 
           <img
             className="gif"
@@ -29,7 +29,7 @@ export default function App() {
 
           <div className="buttons">
             <button
-              className={`yes ${zoomYes ? "zoomed" : ""}`}
+              className={`yes ${yesZoom ? "zoomed" : ""}`}
               onClick={handleYes}
             >
               Yes 💖
@@ -51,8 +51,6 @@ export default function App() {
             src="https://media.giphy.com/media/l4FGpPki5v2Bcd6Ss/giphy.gif"
             alt="celebration gif"
           />
-
-          <p className="final-text">I didn’t have any doubt :3</p>
         </>
       )}
     </div>
