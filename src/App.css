@@ -11,7 +11,6 @@ body {
   align-items: center;
 }
 
-/* Main wrapper */
 .container {
   min-height: 100vh;
   width: 100%;
@@ -25,81 +24,71 @@ body {
   text-align: center;
 }
 
-/* Heading */
 h1 {
   font-size: clamp(1.8rem, 5vw, 3rem);
   margin-bottom: 16px;
   color: #4a0d2f;
 }
 
-/* Gif */
 .gif {
   width: min(80%, 320px);
   margin: 20px 0;
 }
 
-/* Buttons wrapper */
 .buttons {
   display: flex;
   gap: 16px;
   margin-top: 20px;
+  align-items: center;
 }
 
-/* Base button */
 button {
   border: none;
-  padding: 14px 22px;
-  font-size: 1.1rem;
   border-radius: 999px;
   cursor: pointer;
-  background: #ccc;
-  color: #333;
+  font-size: 1.1rem;
+  padding: 14px 22px;
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease;
+  transform-origin: center center;
 }
 
-/* Hover animation — SAME for both */
 button:hover {
   transform: translateY(-2px) scale(1.05);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
-/* Click animation */
 button:active {
   transform: translateY(0) scale(0.98);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
 }
 
-/* Yes button */
 .yes {
   background: #ff5fa2;
   color: white;
 }
 
-/* No button */
+/* THIS MAKES THE YES BUTTON SCALE */
+.yes.zoomed {
+  transform: scale(2.5);
+  transition: transform 0.2s ease;
+}
+
 .no {
   background: #ccc;
   color: #333;
 }
 
-/* Final text */
 .final-text {
   font-size: 1.3rem;
   margin-top: 12px;
   color: #4a0d2f;
 }
 
-/* Disable hover on touch devices */
 @media (hover: none) {
   button:hover {
     transform: none;
     box-shadow: none;
   }
-}
-
-/* Yes button zoom after No click */
-.yes.zoomed {
-  transform: scale(3);
-  transition: transform 5s ease;
 }
