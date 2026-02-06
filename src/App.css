@@ -39,6 +39,7 @@ h1 {
   gap: 16px;
   margin-top: 20px;
   align-items: center;
+  justify-content: center;
 }
 
 button {
@@ -48,12 +49,12 @@ button {
   border-radius: 999px;
   cursor: pointer;
   transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
+    transform 0.1s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
   transform-origin: center center;
 }
 
-/* Hover animation */
 button:hover {
   transform: translateY(-2px) scale(1.05);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
@@ -64,25 +65,34 @@ button:active {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
 }
 
-/* Yes button */
+/* Yes button styles */
 .yes {
   background: #ff5fa2;
   color: white;
 }
 
-/* Zoom when No is clicked */
 .yes.zoomed {
-  transform: scale(2.2);
-  transition: transform 0.2s ease;
+  transform: scale(2.8);
 }
 
-/* No button */
+/* Hide with opacity */
+button.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* No button styles */
 .no {
   background: #ccc;
   color: #333;
 }
 
-/* Disable hover on touch devices */
+.final-text {
+  font-size: 1.3rem;
+  margin-top: 12px;
+  color: #4a0d2f;
+}
+
 @media (hover: none) {
   button:hover {
     transform: none;

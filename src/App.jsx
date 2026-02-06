@@ -4,55 +4,51 @@ import "./App.css";
 export default function App() {
   const [noVisible, setNoVisible] = useState(true);
   const [yesZoom, setYesZoom] = useState(false);
-  const [accepted, setAccepted] = useState(false);
+  const [yesClicked, setYesClicked] = useState(false);
 
   const handleNo = () => {
-    setNoVisible(false); // hide No button
-    setYesZoom(true); // trigger zoom on Yes button
+    setNoVisible(false);
+    setYesZoom(true); // zoom Yes button
   };
 
   const handleYes = () => {
-    setAccepted(true); // show final text + gif
+    setYesClicked(true); // fade Yes button
+    setNoVisible(false); // fade No button
   };
 
   return (
     <div className="container">
-      {!accepted ? (
-        <>
-          <h1>R u gonna be my Valentine? 💘</h1>
+      <h1>
+        {yesClicked
+          ? "I didn’t have any doubt :3 😏💘"
+          : "R u gonna be my Valentine? 💘"}
+      </h1>
 
-          <img
-            className="gif"
-            src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif"
-            alt="cute gif"
-          />
+      <img
+        className="gif"
+        src={
+          yesClicked
+            ? "https://media.giphy.com/media/l4FGpPki5v2Bcd6Ss/giphy.gif"
+            : "https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif"
+        }
+        alt="cute gif"
+      />
 
-          <div className="buttons">
-            <button
-              className={`yes ${yesZoom ? "zoomed" : ""}`}
-              onClick={handleYes}
-            >
-              Yes 💖
-            </button>
+      <div className="buttons">
+        <button
+          className={`yes ${yesZoom ? "zoomed" : ""} ${yesClicked ? "hidden" : ""}`}
+          onClick={handleYes}
+        >
+          Yes 💖
+        </button>
 
-            {noVisible && (
-              <button className="no" onClick={handleNo}>
-                No 😢
-              </button>
-            )}
-          </div>
-        </>
-      ) : (
-        <>
-          <h1>I knew it 😏💘</h1>
-
-          <img
-            className="gif"
-            src="https://media.giphy.com/media/l4FGpPki5v2Bcd6Ss/giphy.gif"
-            alt="celebration gif"
-          />
-        </>
-      )}
+        <button
+          className={`no ${!noVisible ? "hidden" : ""}`}
+          onClick={handleNo}
+        >
+          No 😢
+        </button>
+      </div>
     </div>
   );
 }
